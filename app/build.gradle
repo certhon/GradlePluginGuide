@@ -6,6 +6,9 @@ plugins{
     id 'com.example.harry'
     id 'com.example.harry2'
 }
+apply from: 'https://raw.githubusercontent.com/certhon/GradleDepScript/master/dep.gradle'
+
+println("okhttp版本号："+ okhttp)
 
 dependencies {
     implementation Depends.retrofit
