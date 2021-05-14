@@ -1,11 +1,37 @@
 import com.example.harry.Depends
 
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+        //新加
+        maven {
+            url "file://${rootDir.absolutePath}/repo"
+        }
+        maven {
+            url "file://../repo"
+        }
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        //新加
+        classpath 'com.example.myplugin:MyFirstPlugin:1.0.0'
+
+        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    }
+}
+
 plugins{
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.example.harry'
     id 'com.example.harry2'
+//    id 'com.example.myplugin'
 }
+apply plugin: 'com.example.myplugin'
 apply from: 'https://raw.githubusercontent.com/certhon/GradleDepScript/master/dep.gradle'
 
 println("okhttp版本号："+ okhttp)
