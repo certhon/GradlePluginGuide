@@ -25,15 +25,35 @@ gradlePlugin {
             //指定插件的实现类
             implementationClass = "com.example.myplugin.MyFirstPlugin"
         }
+        create("HarryCheckPlugin") {
+            //插件id,用于引用插件,如：apply plugin: 'id'
+            id = "com.example.HarryCheckPlugin"
+            //指定插件的实现类
+            implementationClass = "com.example.myplugin.HarryCheckPlugin"
+        }
+
+
     }
 }
+
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            //引用路径为：'com.example.myplugin:MyFirstPlugin:1.0.0'
+//            pom.groupId = 'com.example.myplugin'
+//            pom.artifactId = 'MyFirstPlugin'
+//            pom.version = '1.0.0'
+//            //上传到本地
+//            repository(url: uri('../repo'))
+//        }
+//    }
+//}
 
 uploadArchives {
     repositories {
         mavenDeployer {
-            //引用路径为：'com.example.myplugin:MyFirstPlugin:1.0.0'
-            pom.groupId = 'com.example.myplugin'
-            pom.artifactId = 'MyFirstPlugin'
+            pom.groupId = 'com.example.HarryCheckPlugin'
+            pom.artifactId = 'HarryCheckPlugin'
             pom.version = '1.0.0'
             //上传到本地
             repository(url: uri('../repo'))
