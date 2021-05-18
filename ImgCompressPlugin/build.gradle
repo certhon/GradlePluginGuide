@@ -1,0 +1,62 @@
+buildscript {
+    ext.kotlin_version = '1.3.31'
+    ext.gradle_version = '3.5.3'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:$gradle_version"
+    }
+}
+//plugin需要放在buildscript的下面 并且只能是紧接着下面 中间不能穿插其他
+plugins {
+    id 'java-gradle-plugin'
+    id 'kotlin'
+    id 'maven'
+}
+
+gradlePlugin {
+    plugins {
+        create("ImageCompressPlugin") {
+            //插件id,用于引用插件,如：apply plugin: 'id'
+            id = "com.harry.ImageCompressPlugin"
+            //指定插件的实现类
+            implementationClass = "com.example.imgcompressplugin.harry.ImageCompressPlugin"
+        }
+
+
+
+    }
+}
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.harry.ImageCompressPlugin'
+            pom.artifactId = 'ImageCompressPlugin'
+            pom.version = '1.0.0'
+            //上传到本地
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
+
+
+
+
+
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+// Android gradle plugin will allow us to access Android specific features
+    implementation "com.android.tools.build:gradle:$gradle_version"
+}

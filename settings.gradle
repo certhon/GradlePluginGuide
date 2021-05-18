@@ -1,3 +1,4 @@
 include ':MyPlugin'
+include ':ImgCompressPlugin'
 include ':app'
 rootProject.name = "GradlePluginDemo"
